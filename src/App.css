@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+/* src/App.css */
+.App {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+}
+
+pre {
+  background: #f0f0f0;
+  padding: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
