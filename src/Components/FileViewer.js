@@ -1,11 +1,16 @@
-// src/components/FileViewer.js
 import React from "react";
 import { marked } from "marked";
+import { useSelector } from "react-redux";
 
-const FileViewer = ({ filePath, content }) => {
+const FileViewer = () => {
+  const selectedFile = useSelector((store) => store.selectedFile.items);
+  const filePath = selectedFile.selectedFilePath;
+  const content = selectedFile.fileContent;
   const getFileType = (filePath) => {
-    const parts = filePath.split(".");
-    return parts[parts.length - 1];
+    if (filePath) {
+      const parts = filePath.split(".");
+      return parts[parts.length - 1];
+    } else return;
   };
 
   const fileType = getFileType(filePath);
@@ -33,13 +38,18 @@ const FileViewer = ({ filePath, content }) => {
 
   return (
     <div>
-      {filePath ? (
-        <div>
+      {filePath && (
+        <div
+          style={{
+            position: "absolute",
+            top: "5%",
+            left: "35%",
+            padding: "10px",
+          }}
+        >
           <h3>{filePath}</h3>
           {renderContent()}
         </div>
-      ) : (
-        <div>Select a file to view its content.</div>
       )}
     </div>
   );
