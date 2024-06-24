@@ -1,13 +1,12 @@
 const useTraverseTree = () => {
-  // Add a file or folder in tree
-  // Can be optimised using Dynamic Programming
-  const insertNode = function (tree, folderId, item, isFolder) {
+  // Add a file or folder in the tree
+  const insertNode = (tree, folderId, item, isFolder) => {
     if (tree.id === folderId && tree.isFolder) {
       tree.items.unshift({
-        id:new Date().getTime(),
+        id: new Date().getTime(),
         name: item,
         isFolder: isFolder,
-        items: []
+        items: [],
       });
 
       return tree;
@@ -20,12 +19,7 @@ const useTraverseTree = () => {
 
     return { ...tree, items: latestNode };
   };
-
-  const deleteNode = () => {}; // Do it Yourself
-
-  const renameNode = () => {}; // Do it Yourself
-
-  return { insertNode, deleteNode, renameNode };
+  return { insertNode };
 };
 
 export default useTraverseTree;

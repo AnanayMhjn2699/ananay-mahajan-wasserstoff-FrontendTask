@@ -35,6 +35,7 @@ const Folder = ({ handleInsertNode = () => {}, explorer }) => {
       setShowInput({ ...showInput, visible: false });
     }
   };
+  //if the node is a folder procees otherwise else block will execute
   if (explorer.isFolder) {
     return (
       <div style={{ marginTop: 5 }}>
@@ -60,7 +61,7 @@ const Folder = ({ handleInsertNode = () => {}, explorer }) => {
               />
             </div>
           )}
-
+          {/* recursively calling Folder component to account for all the nested nodes */}
           {explorer.items.map((exp) => {
             return (
               <Folder
@@ -85,6 +86,7 @@ const Folder = ({ handleInsertNode = () => {}, explorer }) => {
         </div>
         <div>
           {/* <FileViewer filePath={selectedFilePath} content={fileContent} /> */}
+          {/* FileViewer component shall only be visible on clicking any node */}
           {toShowTheFileViewer ? <FileViewer /> : null}
         </div>
       </div>

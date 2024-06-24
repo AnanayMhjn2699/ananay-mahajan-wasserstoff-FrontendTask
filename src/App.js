@@ -8,7 +8,9 @@ const App = () => {
   const [explorerData, setExplorerData] = useState(explorer);
 
   const { insertNode } = useTraverseTree(); //using custom hook to traverse the file/folder tree
+  // and insert the newly created file/folder
 
+  //function to insert new node to the file data tree
   const handleInsertNode = (folderId, item, isFolder) => {
     const finalTree = insertNode(explorerData, folderId, item, isFolder);
     setExplorerData(finalTree);

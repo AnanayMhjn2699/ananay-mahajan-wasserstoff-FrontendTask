@@ -1,11 +1,13 @@
+//component to render the content of the file on the screen
 import React from "react";
 import { marked } from "marked";
 import { useSelector } from "react-redux";
 
 const FileViewer = () => {
-  const selectedFile = useSelector((store) => store.selectedFile.items);
+  const selectedFile = useSelector((store) => store.selectedFile.items); //subscribing to the redux store
   const filePath = selectedFile.selectedFilePath;
   const content = selectedFile.fileContent;
+
   const getFileType = (filePath) => {
     if (filePath) {
       const parts = filePath.split(".");
